@@ -55,14 +55,10 @@ func getTask(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "applications/json")
 
 	w.WriteHeader(http.StatusOK)
-<<<<<<< HEAD
-
-=======
 	_, err = w.Write(resp)
 	if err != nil {
 		log.Println(err)
 	}
->>>>>>> 0439319 (second commit)
 	w.Write(resp)
 }
 
@@ -83,11 +79,7 @@ func postTask(w http.ResponseWriter, r *http.Request) {
 
 	tasks[task.ID] = task
 
-<<<<<<< HEAD
-	w.Header().Set("Contetnt-Type", "application/json")
-=======
 	//	w.Header().Set("Content-Type", "application/json")
->>>>>>> 0439319 (second commit)
 	w.WriteHeader(http.StatusCreated)
 }
 
@@ -114,33 +106,16 @@ func getTaskID(w http.ResponseWriter, r *http.Request) {
 func deleteTask(w http.ResponseWriter, r *http.Request) {
 	id := chi.URLParam(r, "id")
 
-<<<<<<< HEAD
-	task, ok := tasks[id]
-=======
 	_, ok := tasks[id]
->>>>>>> 0439319 (second commit)
 	if !ok {
 		http.Error(w, "Задача не найдена", http.StatusNoContent)
 		return
 	}
 
-<<<<<<< HEAD
-	resp, err := json.Marshal(task)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusBadRequest)
-		return
-	}
-
-=======
->>>>>>> 0439319 (second commit)
 	delete(tasks, id)
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
-<<<<<<< HEAD
-	w.Write(resp)
-=======
->>>>>>> 0439319 (second commit)
 }
 
 func main() {
